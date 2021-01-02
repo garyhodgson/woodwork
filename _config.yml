@@ -1,0 +1,13 @@
+# Base configs
+url: ""
+baseurl: ""
+image_fulls_loc: "/images/fulls"
+image_thumbs_loc: "/images/thumbs"
+
+# UI configs
+title: "Woodwork by Gary Hodgson"
+subtitle: "Documenting my progress in woodworking."
+author: "Gary Hodgson"
+header:
+ title: "Woodwork"
+ subtitle: "by Gary Hodgson"
