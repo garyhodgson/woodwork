@@ -1,5 +1,6 @@
 # Base configs
-baseurl: "https://garyhodgson.github.io/woodwork/"
+url: ""
+baseurl: ""
 image_fulls_loc: "/images/fulls"
 image_thumbs_loc: "/images/thumbs"
 
@@ -10,3 +11,9 @@ author: "Gary Hodgson"
 header:
  title: "Woodwork"
  subtitle: "by Gary Hodgson"
+
+
+
+# Config which exif data to display
+# Tag is the actual exif tag, icon is a fontawesome icon. Use JSON notation without line breaks
+exif_display: '[{"tag": "ImageDescription", "icon": "info-circle"}]'

@@ -11,7 +11,7 @@ layout: default
     </header>
 
     <!-- Main -->
-    <div id="main">
+    <div id="main" data-exif-display='{{ site.exif_display }}'>
         {% assign reversed = site.static_files | reverse %}
         {% for image in reversed %}
         {% if image.path contains 'fulls' %}
