@@ -3,7 +3,6 @@
  html5up.net | @ajlkn
  Free for personal and commercial use under the CCA 3.0 license (html5up.net/license)
 
- Added EXIF data and enhanced for Jekyll by Ram Patra
  */
 
 (function ($) {
@@ -253,33 +252,11 @@
                         $image.trigger('click');
                     });
 
-            // Fill exif data, when image is loaded
-            $image_img[0].addEventListener("load", function() {
-             EXIF.getData($image_img[0], function () {
-                exifDatas[$image_img.data('name')] = getExifDataMarkup(this);
-
-                if (exifDatas[$image_img.data('name')].title !== "undefined"){
-                  $image.attr('title', exifDatas[$image_img.data('name')].title);
-                }
-             });
-            });
-
         });
 
         // Poptrox.
         $main.poptrox({
             baseZIndex: 20000,
-            caption: function ($a) {
-                var $image_img = $a.children('img');
-                var data = exifDatas[$image_img.data('name')];
-                if (data === undefined) {
-                    // EXIF data
-                    EXIF.getData($image_img[0], function () {
-                        data = exifDatas[$image_img.data('name')] = getExifDataMarkup(this);
-                    });
-                }
-                return data !== undefined ? '<p>' + data.markup + '</p>' : ' ';
-            },
             fadeSpeed: 300,
             onPopupClose: function () {
                 $body.removeClass('modal-active');
@@ -311,24 +288,6 @@
             .on('+xsmall', function () {
                 $main[0]._poptrox.windowMargin = 0;
             });
-
-        function getExifDataMarkup(img) {
-            var exif_display = $('#main').data('exif-display');
-            var template = {markup:''};
-            for (var current in exif_display) {
-                var current_data = exif_display[current];
-                var exif = EXIF.getTag(img, current_data['tag']);
-                if (typeof exif !== "undefined") {
-                  template.markup += '<i class="fa fa-' + current_data['icon'] +  '" aria-hidden="true"></i> ' + exif + '&nbsp;&nbsp;';
-
-                  if (current_data['tag'] === 'ImageDescription'){
-                    template.title = exif;
-                  }
-                }
-            }
-            return template;
-        }
-
     });
 
 })(jQuery);

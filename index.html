@@ -7,7 +7,7 @@ layout: default
 
     <!-- Header -->
     <header id="header">
-        <h1><a href="index.html"><strong>{{ site.header.title }}</strong> {{ site.header.subtitle }}</a></h1>
+        <h1><a href="/"><strong>{{ site.header.title }}</strong> {{ site.header.subtitle }}</a></h1>
     </header>
 
     <!-- Main -->
@@ -16,9 +16,14 @@ layout: default
         {% for image in reversed %}
         {% if image.path contains 'fulls' %}
         <article class="thumb">
-            <a href="{{ site.image_fulls_loc | relative_url }}/{{ image.name }}" class="image">
-                <img src="{{ site.image_thumbs_loc | relative_url }}/{{ image.name }}" alt=""
-                     data-name="{{ image.name }}"/></a>
+
+            {% capture title %}{% exiftag image_description, , {{ image.path }} %}{% endcapture %}
+            <a href="{{ site.image_fulls_loc | relative_url }}/{{ image.name }}" class="image" title="{{ title }}">
+                <img  src="{{ site.image_thumbs_loc | relative_url }}/{{ image.name }}"
+                      alt="{{ title | default: image.basename }}"
+                      title="<a href='{{ site.image_fulls_loc | relative_url }}/{{ image.name }}' target='_blank'>{{ title | default: image.basename }}</a>"
+                      data-name="{{ image.name }}"/>
+            </a>
         </article>
         {% endif %}
         {% endfor %}
