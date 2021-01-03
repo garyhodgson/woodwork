@@ -1,6 +1,5 @@
 # Base configs
-url: ""
-baseurl: ""
+baseurl: "https://garyhodgson.github.io/woodwork/"
 image_fulls_loc: "/images/fulls"
 image_thumbs_loc: "/images/thumbs"
 
