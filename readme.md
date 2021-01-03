@@ -1,0 +1,1 @@
+Note to self: build and deploy from master in WSL2 with the [jgd](https://github.com/yegor256/jekyll-github-deploy) command
